@@ -1,0 +1,235 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+/* end css reset */
+
+:root {
+  --cyan: hsl(179, 62%, 43%);
+  --bright-yellow: hsl(71, 73%, 54%);
+  --turqoise: hsl(179, 47%, 50%);
+  --white: hsl(0, 0%, 100%);
+
+  --light-gray: hsl(204, 43%, 93%);
+  --grayish-blue: hsl(218, 22%, 67%);
+}
+
+@font-face {
+  font-family: "Karla";
+  src: url("fonts/Karla/Karla-VariableFont_wght.ttf");
+}
+
+body {
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  background-color: var(--light-gray);
+}
+
+h2 {
+  font-weight: 700;
+  margin: 0;
+}
+
+.page {
+  display: grid;
+  grid-template-areas:
+    "content"
+    "footer";
+  margin: 1.2rem;
+  min-height: 100vh;
+  place-content: center;
+}
+
+main {
+  grid-area: content;
+  box-shadow: 0 15px 40px rgb(0, 0, 0, 0.25);
+}
+
+footer {
+  grid-area: footer;
+}
+
+section {
+  padding: 1rem;
+}
+
+.intro-section {
+  background-color: var(--white);
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.intro-section__title {
+  color: var(--cyan)
+}
+
+.intro-section__money-back {
+  color: var(--bright-yellow);
+  font-weight: 700;
+}
+
+.intro-section__description {
+  color: var(--grayish-blue);
+}
+
+.subscription-section {
+  background-color: var(--cyan);
+}
+
+.subscription-section__title {
+  color: var(--white);
+}
+
+.subscription-section__amount {
+  color: var(--light-gray);
+}
+
+.subscription-section__amount > strong {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.subscription-section__description {
+  color: var(--white);
+  margin-top: 0;
+}
+
+.subscription-section__signup {
+  margin: 2rem 0 1rem 0;
+  width: 100%;
+  background-color: var(--bright-yellow);
+  display: block;
+  color: var(--white);
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-decoration: none;
+  box-shadow: 10px 10px 10px rgb(0, 0, 0, 0.05);
+}
+
+.subscription-section__signup:hover {
+  box-shadow: none;
+}
+
+.why-us-section {
+  background-color: var(--turqoise);
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.why-us-section__title {
+  color: var(--white);
+}
+
+.why-us-section__reasons {
+  color: var(--light-gray);
+}
+
+@media (min-width: 55em) {
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "intro intro"
+      "subscription why";
+    max-width: 50em;
+  }
+
+  .intro-section {
+    grid-area: intro;
+    padding: 4rem;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .subscription-section {
+    grid-area: subscription;
+    padding: 4rem;
+    border-radius: 0 0 0 5px;
+  }
+
+  .why-us-section {
+    grid-area: why;
+    padding: 4rem;
+    border-radius: 0 0 5px 0;
+  }
+}
